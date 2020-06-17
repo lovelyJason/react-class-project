@@ -8,7 +8,7 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules: 
-  - host: www.sudashenghuo.com
+  - host: help.web-operator.openmng
     http:
       paths: 
       - path: /

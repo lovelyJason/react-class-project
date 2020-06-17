@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: web-operator-help
-          image: reg.miz.so/jike/web-operator-help:v1.0.0
+          image: reg.miz.hk/openmng/web-operator-help:v1.0.0
           imagePullPolicy: Always
           resources:
             limits:
