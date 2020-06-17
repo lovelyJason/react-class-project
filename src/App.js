@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Loadable from 'react-loadable';
 import './App.css';
+
+const loading = () => <div>loading</div>
+const NoMatch = Loadable({ loader: () => import('./screens/404/index'), loading });
+const Faq = Loadable({ loader: () => import('./screens/help/faq/index'), loading });
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Route path="/help" component={Faq} />
+          <Redirect from="/" to="/help" />
+          <Route component={NoMatch} />
+        </Switch>
+      </Router>
     </div>
   );
 }
