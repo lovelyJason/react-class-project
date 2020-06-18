@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-operator-help
+  namespace: openmng
+  labels:
+    app: web-operator-help
+    version: v1.0
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-operator-help
+        version: v1.0
+    spec:
+      containers:
+        - name: web-operator-help
+          image: reg.miz.hk/openmng/web-operator-help:v1.0.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 128m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
+          volumeMounts:
+            - name: log
+              mountPath: /data/logs
+      volumes:
+        - name: log
+          hostPath:
+            path: /data/logs

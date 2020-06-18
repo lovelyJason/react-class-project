@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web-operator-help
+  namespace: openmng
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules: 
+  - host: help.web-operator.openmng
+    http:
+      paths: 
+      - path: /
+        backend:
+          serviceName: web-operator-help
+          servicePort: 80
